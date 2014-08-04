@@ -19,11 +19,30 @@ int		ft_recursive_factorial(int nb);
 
 int		main(void)
 {
-	if (ft_recursive_factorial(5) != 120)
+	int nb;
+	int result;
+	int actual;
+
+	nb = 5;
+	result = ft_recursive_factorial(nb);
+	actual = 120;
+	printf("nb: %i, result: %i, actual: %i\n", nb, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
-	if (ft_recursive_factorial(0) != 1)
+
+	nb = 0;
+	result = ft_recursive_factorial(nb);
+	actual = 1;
+	printf("nb: %i, result: %i, actual: %i\n", nb, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
-	if (ft_recursive_factorial(-42) != 0)
+
+	nb = -42;
+	result = ft_recursive_factorial(nb);
+	actual = 0;
+	printf("nb: %i, result: %i, actual: %i\n", nb, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
+
 	GOES;
 }

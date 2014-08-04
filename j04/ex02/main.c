@@ -19,13 +19,42 @@ int		ft_iterative_power(int nb, int power);
 
 int		main(void)
 {
-	if (ft_iterative_power(-3, 0) != 1)
+	int nb;
+	int power;
+	int result;
+	int actual;
+
+	nb = -3;
+	power = 0;
+	result = ft_iterative_power(nb, power);
+	actual = 1;
+	printf("nb: %i, power: %i, result: %i, actual: %i\n", nb, power, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
-	if (ft_iterative_power(-235, -124) != 0)
+
+	nb = -235;
+	power = -124;
+	result = ft_iterative_power(nb, power);
+	actual = 0;
+	printf("nb: %i, power: %i, result: %i, actual: %i\n", nb, power, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
-	if (ft_iterative_power(21, 3) != 9261)
+
+	nb = 21;
+	power = 3;
+	result = ft_iterative_power(nb, power);
+	actual = 9261;
+	printf("nb: %i, power: %i, result: %i, actual: %i\n", nb, power, result, actual);
+	if (result != actual)
 		FAKE_N_GAY;
-	if (ft_iterative_power(4, 10) != 1048576)
-	   FAKE_N_GAY;
+
+	nb = 4;
+	power = 10;
+	result = ft_iterative_power(nb, power);
+	actual = 1048576;
+	printf("nb: %i, power: %i, result: %i, actual: %i\n", nb, power, result, actual);
+	if (result != actual)
+		FAKE_N_GAY;
+
 	GOES;	
 }
