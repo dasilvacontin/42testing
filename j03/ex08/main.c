@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/02 14:40:37 by dda-silv          #+#    #+#             */
-/*   Updated: 2014/08/02 17:27:27 by dda-silv         ###   ########.fr       */
+/*   Updated: 2014/08/05 16:02:51 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_atoi(char *str);
 
 int		main(void)
 {
-	char 	*test_str[10];
+	char 	*test_str[11];
 	int		t;
 	int 	nbr_atoi;
 	int		nbr_ft_atoi;
@@ -32,8 +32,10 @@ int		main(void)
 	test_str[7] = "7957";
 	test_str[8] = "";
 	test_str[9] = "-";
+	test_str[10] = "-3467";
+
 	t = 0;
-	while (t < 10)
+	while (t < 11)
 	{
 		nbr_atoi = atoi(test_str[t]);
 		nbr_ft_atoi = ft_atoi(test_str[t]);
