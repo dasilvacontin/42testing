@@ -42,7 +42,8 @@ int		main(void)
 	double	diff_t;
 	char *data[TEST_CASES][3];
 	char *original;
-	char *actual;
+	char *wat;
+	char actual[100];
 	char *n;
 	char string[100];
 	int i;
@@ -54,10 +55,11 @@ int		main(void)
 	i = 0;
 	while (i < TEST_CASES)
 	{
-		ft_get_values(&data[i][0], &original, &actual, &n);
+		ft_get_values(&data[i][0], &original, &wat, &n);
 		time(&start_t);
 		ft_strncpy(string, original, n[0] - '0');
 		time(&end_t);
+		strncpy(actual, original, n[0] - '0');
 		string[n[0] - '0'] = '\0';
 		diff_t = difftime(end_t, start_t);
 		printf("original: %s, n: %i, copy: %s, actual: %s, execution time = %f\n", original, n[0] - '0', string, actual, diff_t);
