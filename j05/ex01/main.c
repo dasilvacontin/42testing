@@ -18,21 +18,21 @@
 #define FAKE_N_GAY return printf("\e[0;31mFAKE AND GAY ✗\e[0m\n")
 #define SNAIL return printf("\e[0;33mYOU ARE TOO SLOW! ✗\e[0m\n")
 
-#define TEST_CASES 3
+#define TEST_CASES 4
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 
-void	ft_add_test_case(char **data, char *original, char *actual, char *n)
+void	ft_add_test_case(char **data, char *dest, char *src, char *n)
 {
-	data[0] = original;
-	data[1] = actual;
+	data[0] = dest;
+	data[1] = src;
 	data[2] = n;
 }
 
-void	ft_get_values(char **data, char **original, char **actual, char **n)
+void	ft_get_values(char **data, char **dest, char **src, char **n)
 {
-	*original = data[0];
-	*actual = data[1];
+	*dest = data[0];
+	*src = data[1];
 	*n = data[2];
 }
 
@@ -41,29 +41,32 @@ int		main(void)
 	time_t 	start_t, end_t;
 	double	diff_t;
 	char *data[TEST_CASES][3];
-	char *original;
-	char *wat;
-	char actual[100];
+	char *dest;
+	char *src;
 	char *n;
-	char string[100];
+	char your_result[100];
+	char actual_answer[100];
 	int i;
 
-	ft_add_test_case(&data[0][0], "je code avec le cul", "je co", "5");
-	ft_add_test_case(&data[1][0], "u mad", "u mad", "9");
+	ft_add_test_case(&data[0][0], "je code avec le cul", "wut", "3");
+	ft_add_test_case(&data[1][0], "u mad", "ooooo", "2");
 	ft_add_test_case(&data[2][0], "", "", "5");
+	ft_add_test_case(&data[3][0], "lelelelelelele", "lalalala", "5");
 	
 	i = 0;
 	while (i < TEST_CASES)
 	{
-		ft_get_values(&data[i][0], &original, &wat, &n);
+		printf("test %i\n", i);
+		ft_get_values(&data[i][0], &dest, &src, &n);
 		time(&start_t);
-		ft_strncpy(string, original, n[0] - '0');
+		strcpy(your_result, dest);
+		strcpy(actual_answer, dest);
+		ft_strncpy(your_result, src, n[0] - '0');
 		time(&end_t);
-		strncpy(actual, original, n[0] - '0');
-		string[n[0] - '0'] = '\0';
+		strncpy(actual_answer, src, n[0] - '0');
 		diff_t = difftime(end_t, start_t);
-		printf("original: %s, n: %i, copy: %s, actual: %s, execution time = %f\n", original, n[0] - '0', string, actual, diff_t);
-		if (strcmp(actual, string))
+		printf("dest: %s, src: %s, n: %i, your_result: %s, actual_answer: %s, execution time = %f\n", dest, src, n[0] - '0', your_result, actual_answer, diff_t);
+		if (strcmp(your_result, actual_answer))
 			FAKE_N_GAY;
 		if (diff_t >= 2.0)
 			SNAIL;
