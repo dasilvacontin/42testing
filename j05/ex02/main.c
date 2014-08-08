@@ -18,7 +18,7 @@
 #define FAKE_N_GAY return printf("\e[0;31mFAKE AND GAY ✗\e[0m\n")
 #define SNAIL return printf("\e[0;33mYOU ARE TOO SLOW! ✗\e[0m\n")
 
-#define TEST_CASES 3
+#define TEST_CASES 4
 
 char    *ft_strstr(char *str, char *to_find);
 
@@ -48,7 +48,8 @@ int		main(void)
 	ft_add_test_case(&data[0][0], "je code avec le cul", "code");
 	ft_add_test_case(&data[1][0], "u mad", "e");
 	ft_add_test_case(&data[2][0], "dflisigdidsgdhsghg", "sg");
-	
+	ft_add_test_case(&data[3][0], "asd fgh", "fgh");
+
 	i = 0;
 	while (i < TEST_CASES)
 	{
