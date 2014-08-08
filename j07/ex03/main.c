@@ -18,7 +18,7 @@ int		ft_is_delimeter(char c)
 	return (c == ' ' || c == '\0' || c == '	' || c == '\n');
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char	*fft_strcpy(char *dest, char *src)
 {
 	int i;
 
@@ -67,7 +67,7 @@ char	**ft_split_whitespaces(char *str)
 		ptr = str;
 		ft_advance(&str);
 		tab[words] = (char*)malloc(sizeof(char) * (str - ptr) + 1);
-		ft_strcpy(tab[words], ptr);
+		fft_strcpy(tab[words], ptr);
 		tab[words++][str - ptr] = '\0';
 		ft_advance_whitespace(&str);
 	}
@@ -88,6 +88,7 @@ char	**ft_split_whitespaces(char *str)
 
 char	*ft_concat_params(int argc, char **argv);
 
+/*
 void	ft_add_test_case(char **data, char *c_argc, char *nl)
 {
 	data[0] = str;
@@ -99,9 +100,11 @@ void	ft_get_values(char **data, char **str, char **nl)
 	*str = data[0];
 	*nl = data[1];
 }
+*/
 
 int		main(void)
 {
+	/*
 	time_t	start_t, end_t;
 	double	diff_t;
 	char	*data[TEST_CASES][3];
@@ -136,5 +139,6 @@ int		main(void)
 			SNAIL;
 		++i;
 	}
+	*/
 	GOES;
 }
