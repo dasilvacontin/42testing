@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/08/06 21:48:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2014/08/06 21:48:14 by dda-silv         ###   ########.fr       */
+/*   Created: 2014/08/07 11:03:52 by dda-silv          #+#    #+#             */
+/*   Updated: 2014/08/07 11:03:53 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,54 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 #define GOES return printf("\e[0;32mGOES ✓\e[0m\n");
 #define FAKE_N_GAY return printf("\e[0;31mFAKE AND GAY ✗\e[0m\n")
 #define SNAIL return printf("\e[0;33mYOU ARE TOO SLOW! ✗\e[0m\n")
 
-#define TEST_CASES 5
+#define TEST_CASES 6
 
-int		ft_str_is_alpha(char *str);
+char	*ft_strdup(char *src);
 
-void	ft_add_test_case(char **data, char *original, char *answer)
+void	ft_add_test_case(char **data, char *str)
 {
-	data[0] = original;
-	data[1] = answer;
+	data[0] = str;
 }
 
-void	ft_get_values(char **data, char **original, char **answer)
+void	ft_get_values(char **data, char **str)
 {
-	*original = data[0];
-	*answer = data[1];
+	*str = data[0];
 }
 
 int		main(void)
 {
 	time_t 	start_t, end_t;
 	double	diff_t;
-	char *data[TEST_CASES][2];
-	char *original;
-	int your_result;
-	char *answer;
+	char *data[TEST_CASES];
+	char *str;
+	char *your_result;
+	char *actual_result;
 	int i;
 
-	ft_add_test_case(&data[0][0], "Je Code avec le CUL", "0");
-	ft_add_test_case(&data[1][0], "UMADBRO", "1");
-	ft_add_test_case(&data[2][0], "", "1");
-	ft_add_test_case(&data[3][0], "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un", "0");
-	ft_add_test_case(&data[4][0], "h44526", "0");
+	ft_add_test_case(&data[0], "Je Code avec le CUL");
+	ft_add_test_case(&data[1], "U MAD BRO");
+	ft_add_test_case(&data[2], "");
+	ft_add_test_case(&data[3], "iBI^7toBO&*TYUIbb7");
+	ft_add_test_case(&data[4], "aaaaaaaa");
+	ft_add_test_case(&data[5], "bbbbbbbb");
 	
 	i = 0;
 	while (i < TEST_CASES)
 	{
-		ft_get_values(&data[i][0], &original, &answer);
+		ft_get_values(&data[i], &str);
 		time(&start_t);
-		your_result = ft_str_is_alpha(original);
+		your_result = ft_strdup(str);
 		time(&end_t);
+		actual_result = strdup(str);
 		diff_t = difftime(end_t, start_t);
-		printf("str: %s, your_result: %i, actual_result: %i, execution time = %f\n", original, your_result, answer[0] - '0', diff_t);
-		if (your_result != answer[0] - '0')
+		printf("str: %s, your_result: %s, actual_result: %s, execution time = %f\n", str, your_result, actual_result, diff_t);
+		if (strcmp(your_result, actual_result) != 0)
 			FAKE_N_GAY;
 		if (diff_t >= 2.0)
 			SNAIL;
