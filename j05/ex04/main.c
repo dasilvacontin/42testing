@@ -18,7 +18,7 @@
 #define FAKE_N_GAY return printf("\e[0;31mFAKE AND GAY ✗\e[0m\n")
 #define SNAIL return printf("\e[0;33mYOU ARE TOO SLOW! ✗\e[0m\n")
 
-#define TEST_CASES 4
+#define TEST_CASES 5
 
 int     ft_strncmp(char *s1, char *s2, unsigned int n);
 
@@ -52,10 +52,13 @@ int		main(void)
 	ft_add_test_case(&data[1][0], "u mad", "u maf", "2");
 	ft_add_test_case(&data[2][0], "", "", "9");
 	ft_add_test_case(&data[3][0], "asfg asg", "asfgasg", "7");
+	ft_add_test_case(&data[4][0], "asd", "asd", "\0x7E");
 	
 	i = 0;
 	while (i < TEST_CASES)
 	{
+		if (i == 4)
+			printf("You might get a segfault, your fault.\n");
 		ft_get_values(&data[i][0], &s1, &s2, &n);
 		time(&start_t);
 		your_result = ft_strncmp(s1, s2, n[0] - '0');
