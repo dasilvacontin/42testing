@@ -18,7 +18,7 @@ int		ft_is_delimeter(char c)
 	return (c == ' ' || c == '\0' || c == '	' || c == '\n');
 }
 
-char	*fft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
 
@@ -67,7 +67,7 @@ char	**ft_split_whitespaces(char *str)
 		ptr = str;
 		ft_advance(&str);
 		tab[words] = (char*)malloc(sizeof(char) * (str - ptr) + 1);
-		fft_strcpy(tab[words], ptr);
+		ft_strcpy(tab[words], ptr);
 		tab[words++][str - ptr] = '\0';
 		ft_advance_whitespace(&str);
 	}
@@ -84,51 +84,48 @@ char	**ft_split_whitespaces(char *str)
 #define FAKE_N_GAY return printf("\e[0;31mFAKE AND GAY ✗\e[0m\n")
 #define SNAIL return printf("\e[0;33mYOU ARE TOO SLOW! ✗\e[0m\n")
 
-#define TEST_CASES 3
+#define TEST_CASES 1
 
 char	*ft_concat_params(int argc, char **argv);
 
-void	ft_add_test_case(char **data, char *argc, char *argv, char *actual)
+void	ft_add_test_case(char **data, char *c_argc, char *nl)
 {
-	data[0] = argc;
-	data[1] = argv;
-	data[2] = actual;
+	data[0] = str;
+	data[1] = nl;
 }
 
-void	ft_get_values(char **data, char **argc, char **argv, char **actual)
+void	ft_get_values(char **data, char **str, char **nl)
 {
-	*argc = data[0];
-	*argv = data[1];
-	*actual = data[2];
+	*str = data[0];
+	*nl = data[1];
 }
 
 int		main(void)
 {
-	time_t 	start_t, end_t;
+	time_t	start_t, end_t;
 	double	diff_t;
-	char *data[TEST_CASES][3];
+	char	*data[TEST_CASES][3];
 
 	char 	*c_argc;
 	int		argc;
 
-	char 	*c_argv;
+	char	*c_argv;
 	char	**argv;
-	char	*your_result;
-	char	*actual_answer;
-	int		i;
 
-	ft_add_test_case(&data[0][0], "4", "./a.out a b c", "a\nb\nc");
-	ft_add_test_case(&data[1][0], "1", "./a.out", "");
-	ft_add_test_case(&data[2][0], "2", "./a.out 364", "364");
+	char	*your_result
+	char	*actual_result;
+
+	int		i;
+	int		j;
+
+	ft_add_test_case(&data[0][0], "4", "./a.out a b c");
 	
 	i = 0;
 	while (i < TEST_CASES)
 	{
-		ft_get_values(&data[i][0], &c_argc, &c_argv, &actual_answer);
-		argc = c_argc[0] - '0';
-		argv = ft_split_whitespaces(c_argv);
+		ft_get_values(&data[i][0], &str, &nl);
 		time(&start_t);
-		your_result = ft_concat_params(argc, argv);
+		your_result = ft_split_whitespaces(str);
 		time(&end_t);
 		diff_t = difftime(end_t, start_t);
 		printf("argc: %i, argv: %s, execution time = %f\n", argc, c_argv, diff_t);
