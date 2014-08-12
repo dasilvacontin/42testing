@@ -6,12 +6,11 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/11 17:44:17 by dda-silv          #+#    #+#             */
-/*   Updated: 2014/08/12 12:03:42 by dda-silv         ###   ########.fr       */
+/*   Updated: 2014/08/12 13:42:18 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_boolean.h"
-#include <unistd.h>
 
 void	ft_putstr(char *str)
 {
